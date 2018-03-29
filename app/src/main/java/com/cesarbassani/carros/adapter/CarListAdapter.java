@@ -7,13 +7,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cesarbassani.carros.R;
+import com.cesarbassani.carros.entities.Car;
 import com.cesarbassani.carros.viewholder.CarViewHolder;
+
+import java.util.List;
 
 /**
  * Created by cesarbassani on 29/03/18.
  */
 
 public class CarListAdapter extends RecyclerView.Adapter<CarViewHolder> {
+
+    private List<Car> mListCars;
+
+    public CarListAdapter(List<Car> cars) {
+        this.mListCars = cars;
+    }
 
     @Override
     public CarViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -29,11 +38,13 @@ public class CarListAdapter extends RecyclerView.Adapter<CarViewHolder> {
     @Override
     public void onBindViewHolder(CarViewHolder holder, int position) {
 
+        Car car = this.mListCars.get(position);
 
+        holder.bindData(car);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return this.mListCars.size();
     }
 }

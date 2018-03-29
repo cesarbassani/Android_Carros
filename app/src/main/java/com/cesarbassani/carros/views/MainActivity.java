@@ -7,6 +7,11 @@ import android.support.v7.widget.RecyclerView;
 
 import com.cesarbassani.carros.R;
 import com.cesarbassani.carros.adapter.CarListAdapter;
+import com.cesarbassani.carros.data.CarMock;
+import com.cesarbassani.carros.entities.Car;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,11 +23,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        CarMock carMock = new CarMock();
+        List<Car> carList = new ArrayList<>();
+        carList.addAll(carMock.getList());
+
         //1 - Obter a recyclerView
         this.mViewHolder.recyclerCars = findViewById(R.id.recycler_cars);
 
         //2 - Definir Adapter
-        carListAdapter = new CarListAdapter();
+        carListAdapter = new CarListAdapter(carList);
         this.mViewHolder.recyclerCars.setAdapter(carListAdapter);
 
         //3 - Definir um layout
