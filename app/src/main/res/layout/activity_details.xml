@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context="com.cesarbassani.carros.DetailsActivity">
+    tools:context="com.cesarbassani.carros.views.DetailsActivity">
 
     <TextView
         android:layout_width="match_parent"
