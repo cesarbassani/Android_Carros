@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.cesarbassani.carros.R;
 import com.cesarbassani.carros.entities.Car;
+import com.cesarbassani.carros.listener.OnListClickInteractionListener;
 import com.cesarbassani.carros.viewholder.CarViewHolder;
 
 import java.util.List;
@@ -19,9 +20,11 @@ import java.util.List;
 public class CarListAdapter extends RecyclerView.Adapter<CarViewHolder> {
 
     private List<Car> mListCars;
+    private OnListClickInteractionListener mOnListClickInteractionListener;
 
-    public CarListAdapter(List<Car> cars) {
+    public CarListAdapter(List<Car> cars, OnListClickInteractionListener listener) {
         this.mListCars = cars;
+        this.mOnListClickInteractionListener = listener;
     }
 
     @Override
@@ -40,7 +43,7 @@ public class CarListAdapter extends RecyclerView.Adapter<CarViewHolder> {
 
         Car car = this.mListCars.get(position);
 
-        holder.bindData(car);
+        holder.bindData(car, this.mOnListClickInteractionListener);
     }
 
     @Override
