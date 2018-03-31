@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         mContext = this;
 
-        CarMock carMock = new CarMock();
+        CarMock carMock = new CarMock(this);
         List<Car> carList = new ArrayList<>();
         carList.addAll(carMock.getList());
 

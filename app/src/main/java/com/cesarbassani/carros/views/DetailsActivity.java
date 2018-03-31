@@ -2,6 +2,7 @@ package com.cesarbassani.carros.views;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cesarbassani.carros.R;
@@ -24,11 +25,13 @@ public class DetailsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
 
-        mCarMock = new CarMock();
+        mCarMock = new CarMock(this);
 
-        this.mViewHolder.textModel = findViewById(R.id.text_model);
+        this.mViewHolder.textModel = findViewById(R.id.text_car_model);
         this.mViewHolder.textHorsePower = findViewById(R.id.text_horse_power);
         this.mViewHolder.textPrice = findViewById(R.id.text_price);
+        this.mViewHolder.imageCarPicture = findViewById(R.id.img_car_pic);
+        this.mViewHolder.textManufacturer = findViewById(R.id.text_manufacturer);
 
         this.getDataFromActivity();
 
@@ -38,7 +41,8 @@ public class DetailsActivity extends AppCompatActivity {
     private void setData() {
         this.mViewHolder.textModel.setText(this.mCar.model);
         this.mViewHolder.textHorsePower.setText(String.valueOf(this.mCar.horsePower));
-        this.mViewHolder.textPrice.setText(String.valueOf(this.mCar.price));
+        this.mViewHolder.textPrice.setText("R$ " + String.valueOf(this.mCar.price));
+        this.mViewHolder.imageCarPicture.setImageDrawable(this.mCar.picture);
     }
 
     private void getDataFromActivity() {
@@ -55,5 +59,7 @@ public class DetailsActivity extends AppCompatActivity {
         TextView textModel;
         TextView textHorsePower;
         TextView textPrice;
+        ImageView imageCarPicture;
+        TextView textManufacturer;
     }
 }
